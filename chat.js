@@ -38,3 +38,13 @@ app.get('/callback', async (req, res) => {
 });
 
 app.listen(3000, () => console.log('Nyxium Music server running on port 3000'));
+app.get('/dashboard', (req, res) => {
+  if (!req.session.access_token) {
+    // Not logged in → redirect to Spotify auth
+    res.redirect('/login');
+  } else {
+    // Already logged in → show dashboard
+    res.sendFile(__dirname + '/dashboard.html');
+  }
+});
+
