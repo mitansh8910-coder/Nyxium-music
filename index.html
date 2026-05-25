@@ -43,16 +43,17 @@
       to { background-position: 10000px 10000px; }
     }
 
-    /* Cursor star */
-    #cursor-star {
+    /* Cursor styled as "Music" */
+    #cursor-music {
       position: fixed;
-      width: 15px;
-      height: 15px;
-      background: radial-gradient(circle, #00f 40%, transparent 70%);
-      border-radius: 50%;
+      font-size: 18px;
+      font-weight: bold;
+      color: #00f;
+      text-shadow: 0 0 10px #a64dff, 0 0 20px #fff;
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 9999;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     /* Particle trail */
@@ -131,7 +132,7 @@
   <p id="animated-message"></p>
 
   <!-- Custom cursor -->
-  <div id="cursor-star"></div>
+  <div id="cursor-music">Music</div>
 
   <!-- Options -->
   <div class="options">
@@ -156,7 +157,7 @@
   </div>
 
   <script>
-    // Typing animation for welcome message
+    // Typing animation for welcome tagline
     function typeMessage(elementId, text, speed=50) {
       let i = 0;
       function typing() {
@@ -170,206 +171,11 @@
     }
 
     window.onload = () => {
-      typeMessage("animated-message", "Welcome to Nyxium Music Dashboard 🌌");
+      typeMessage("animated-message", "Your cosmic music journey begins here...");
     };
 
     // Cursor + particle trail
-    const cursor = document.getElementById('cursor-star');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.pageX + 'px';
-      cursor.style.top = e.pageY + 'px';
-
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.left = e.pageX + 'px';
-      particle.style.top = e.pageY + 'px';
-
-      const colors = ['#00f', '#a64dff', '#fff'];
-      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-
-      document.body.appendChild(particle);
-      setTimeout(() => particle.remove(), 1000);
-    });
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Nyxium Music Dashboard</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at top, #1a0033, #000000);
-      color: #ffffff;
-      font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      overflow-y: auto;
-      cursor: none; /* hide default cursor */
-    }
-
-    h1 {
-      font-size: 3em;
-      margin-top: 60px;
-      text-shadow: 0 0 20px #a64dff, 0 0 40px #ff66cc;
-    }
-
-    #animated-message {
-      margin-top: 20px;
-      font-size: 1.5em;
-      color: #ff66cc;
-      text-shadow: 0 0 10px #a64dff;
-    }
-
-    /* Starfield background */
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-      animation: moveStars 60s linear infinite;
-      z-index: -1;
-    }
-
-    @keyframes moveStars {
-      from { background-position: 0 0; }
-      to { background-position: 10000px 10000px; }
-    }
-
-    /* Cursor star */
-    #cursor-star {
-      position: fixed;
-      width: 15px;
-      height: 15px;
-      background: radial-gradient(circle, #00f 40%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-    }
-
-    /* Particle trail */
-    .particle {
-      position: fixed;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0.8;
-      transform: translate(-50%, -50%);
-      animation: fadeOut 1s forwards;
-    }
-
-    @keyframes fadeOut {
-      to { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
-    }
-
-    /* Dashboard options */
-    .options {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .option-btn {
-      background: linear-gradient(90deg, #a64dff, #ff66cc);
-      border: none;
-      padding: 15px 40px;
-      font-size: 1.2em;
-      color: white;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 0 20px #a64dff;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .option-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px #ff66cc;
-    }
-
-    .features {
-      margin-top: 50px;
-      text-align: left;
-      width: 70%;
-      margin-left: auto;
-      margin-right: auto;
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #a64dff;
-    }
-
-    .features h2 {
-      color: #ff66cc;
-      text-shadow: 0 0 10px #a64dff;
-    }
-
-    .features ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .features li {
-      margin: 10px 0;
-      font-size: 1.1em;
-    }
-  </style>
-</head>
-<body>
-  <div class="stars"></div>
-  <h1>🌌 Nyxium Music Dashboard</h1>
-  <p id="animated-message"></p>
-
-  <!-- Custom cursor -->
-  <div id="cursor-star"></div>
-
-  <!-- Options -->
-  <div class="options">
-    <a href="https://discord.com/oauth2/authorize?client_id=1506954720466702336&scope=bot" target="_blank">
-      <button class="option-btn">Invite Our Bot</button>
-    </a>
-    <a href="https://discord.gg/1500804184142905376" target="_blank">
-      <button class="option-btn">Get Help at Our Discord</button>
-    </a>
-  </div>
-
-  <!-- Features section -->
-  <div class="features">
-    <h2>✨ Features of Nyxium Music Bot</h2>
-    <ul>
-      <li>🎵 Play music from Spotify, YouTube, and more</li>
-      <li>📜 Create and manage playlists directly in Discord</li>
-      <li>🌌 Cosmic-themed embeds with glowing UI</li>
-      <li>⚡ Fast, reliable playback with multi-server support</li>
-      <li>🤖 AI-powered recommendations for songs</li>
-    </ul>
-  </div>
-
-  <script>
-    // Typing animation for welcome message
-    function typeMessage(elementId, text, speed=50) {
-      let i = 0;
-      function typing() {
-        if (i < text.length) {
-          document.getElementById(elementId).innerHTML += text.charAt(i);
-          i++;
-          setTimeout(typing, speed);
-        }
-      }
-      typing();
-    }
-
-    window.onload = () => {
-      typeMessage("animated-message", "Welcome to Nyxium Music Dashboard 🌌");
-    };
-
-    // Cursor + particle trail
-    const cursor = document.getElementById('cursor-star');
+    const cursor = document.getElementById('cursor-music');
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.pageX + 'px';
       cursor.style.top = e.pageY + 'px';
