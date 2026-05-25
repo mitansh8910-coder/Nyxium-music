@@ -43,30 +43,17 @@
       to { background-position: 10000px 10000px; }
     }
 
-    /* Cursor styled as equalizer bars */
-    #cursor-eq {
+    /* Cursor styled as treble clef */
+    #cursor-clef {
       position: fixed;
-      display: flex;
-      gap: 3px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #00f;
+      text-shadow: 0 0 10px #a64dff, 0 0 20px #fff;
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 9999;
-    }
-
-    .bar {
-      width: 4px;
-      height: 12px;
-      background: #00f;
-      border-radius: 2px;
-      animation: pulse 0.6s infinite alternate;
-    }
-
-    .bar:nth-child(2) { animation-delay: 0.2s; background: #a64dff; }
-    .bar:nth-child(3) { animation-delay: 0.4s; background: #fff; }
-
-    @keyframes pulse {
-      from { height: 6px; opacity: 0.7; }
-      to { height: 14px; opacity: 1; }
+      font-family: 'Segoe UI Symbol', 'Arial Unicode MS', sans-serif;
     }
 
     /* Particle trail */
@@ -144,12 +131,8 @@
   <h1>🌌 Nyxium Music Dashboard</h1>
   <p id="animated-message"></p>
 
-  <!-- Custom cursor -->
-  <div id="cursor-eq">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
+  <!-- Custom cursor (treble clef symbol 🎼 or 🎵) -->
+  <div id="cursor-clef">🎼</div>
 
   <!-- Options -->
   <div class="options">
@@ -192,7 +175,7 @@
     };
 
     // Cursor + particle trail
-    const cursor = document.getElementById('cursor-eq');
+    const cursor = document.getElementById('cursor-clef');
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.pageX + 'px';
       cursor.style.top = e.pageY + 'px';
